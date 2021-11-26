@@ -23,6 +23,13 @@ class Models_Test(unittest.TestCase):
         orm.rollback()
         orm.db_session.__exit__()
 
+        '''
+        binddb calls gneerate_mapping which creates the tables outside the transaction
+        drop them
+        '''
+        self.pony.db.drop_all_tables(with_all_data=True)
+        self.pony.db.disconnect()
+
     def test__emptyDB(self):
         pass
 
@@ -52,6 +59,8 @@ class ModelSubset_Test(unittest.TestCase):
         orm.rollback()
         orm.db_session.__exit__()
 
+        self.pony.db.drop_all_tables(with_all_data=True)
+        self.pony.db.disconnect()
 
     def test__createSolarEntity(self):
 
@@ -76,6 +85,8 @@ class ModelCross_Test(unittest.TestCase):
         orm.rollback()
         orm.db_session.__exit__()
 
+        self.pony.db.drop_all_tables(with_all_data=True)
+        self.pony.db.disconnect()
 
     def test__createSolarEntity(self):
 
@@ -109,6 +120,9 @@ class ModelPersistence_Test(unittest.TestCase):
         pass
 
     def tearDown(self):
+        pass
+
+    def test__justdrop(self):
         pass
 
     def test__simplebind(self):

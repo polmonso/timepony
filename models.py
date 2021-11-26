@@ -22,9 +22,10 @@ class PonyManager:
         self.database_info = database_info
         self.timescaled_tables = []
 
-    def binddb(self):
+    ''' creates tables '''
+    def binddb(self, createTables=True):
         self.db.bind(**self.database_info)
-        self.db.generate_mapping(create_tables=True, check_tables=True)
+        self.db.generate_mapping(create_tables=createTables, check_tables=True)
 
     def define_entities(self):
 

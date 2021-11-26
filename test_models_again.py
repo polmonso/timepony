@@ -25,6 +25,9 @@ class Models_TestAgain(unittest.TestCase):
         orm.rollback()
         orm.db_session.__exit__()
 
+        self.pony.db.drop_all_tables(with_all_data=True)
+        self.pony.db.disconnect()
+
     def test__emptyDB(self):
         pass
 
