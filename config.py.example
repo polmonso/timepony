@@ -1,0 +1,1 @@
+database_info = {"provider":"postgres","database":"ponytime_test","user":"tester","host":"localhost","port":"5432"}
